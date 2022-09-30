@@ -1,20 +1,23 @@
 import React from "react";
 import { hot } from "react-hot-loader/root";
 
-//  ******* clears console after each code update ******
-window.addEventListener("message", function onWebpackMessage(e) {
-  console.clear();
-});
-//  *****************************************************
+import createTheme from "@mui/material/styles/createTheme";
+import CssBaseline from "@mui/material/CssBaseline";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+
+import Welcome from "./components/Welcome/Welcome";
 
 const App = () => {
   return (
-    <div className='container'>
-      <div>Name: App</div>
-      <div>Framework: react</div>
-      <div>Language: JavaScript</div>
-      <div>CSS: Empty CSS</div>
-    </div>
+    <ThemeProvider theme={createTheme({ palette: { mode: "dark" } })}>
+      <CssBaseline />
+      <AppBar position='static'>
+        <Toolbar></Toolbar>
+      </AppBar>
+      <Welcome />
+    </ThemeProvider>
   );
 };
 
