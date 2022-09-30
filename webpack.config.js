@@ -15,7 +15,8 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
     alias: {
-      assets: path.resolve(__dirname, './src/assets')
+      crypto: require.resolve("crypto-browserify"),
+      assets: path.resolve(__dirname, "./src/assets"),
     },
   },
 
@@ -51,6 +52,10 @@ module.exports = {
           loader: "file-loader",
         },
       },
+      {
+        test: /\.json$/,
+        loader: "json-loader",
+      },
     ],
   },
 
@@ -79,7 +84,7 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       title: name,
-      favicon: './src/assets/favicon.ico',
+      favicon: "./src/assets/favicon.ico",
     }),
   ],
 
